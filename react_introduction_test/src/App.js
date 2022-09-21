@@ -1,49 +1,40 @@
+import { useState } from "react"
 
-import { useState } from 'react';
-import './App.css';
 
-function App() {
-const [like, setLike] = useState (25);
-const [like2, setLike2] = useState (0);
-const [like3, setLike3] = useState (10);
+function Likes (){
+  const [like1, updateLike] = useState (30)
+  const [like2, updateLike2] = useState (39)
+  const [like3, updateLike3] = useState (83)
 
-function likes (){
-  setLike ((prevLike)=> {
-    return prevLike ? prevLike -1 : 0;
-  });
-}
+  function onClick (){
+    updateLike (like1 + 1)
+  }
 
-function likes2 (){
-  setLike2 ((prevLike2)=> {
-    return prevLike2 ? prevLike2 -1 : 0;
-  });
-}
+  function onClick2 (){
+    updateLike2 (like2 + 1)
+  }
 
-function likes3 (){
-  setLike3 ((prevLike3)=> {
-    return prevLike3 ? prevLike3 -1 : 0;
-  });
-}
-
+  function onClick3 (){
+    updateLike3 (like3 + 1)
+  }
 
   return (
-    <div className="App">
-      <p data-testid="countLike1">{like}</p>
-      <button data-testid="plus" onClick={()=> setLike ((prevLike)=> prevLike + 1)} >1 Like +</button>
-      <button data-testid="less"  onClick={()=> likes()} > 1 like - </button>
-
-      <p data-testid="countLike2">{like2}</p>
-      <button data-testid="plus2" onClick={()=> setLike2 ((prevlike2)=> prevlike2 + 1)} >1 Like +</button>
-      <button data-testid="less2"  onClick={()=> likes2()} > 1 like - </button>
-
-      <p data-testid="countLike3">{like3}</p>
-      <button data-testid="plus3" onClick={()=> setLike3 ((prevLike3)=> prevLike3 + 1)} >1 Like +</button>
-      <button data-testid="less3"  onClick={()=> likes3()} > 1 like - </button>
-
-
-    </div>
-    
+    <div className='likes'>
+      <div className='likeDefault' data-testid="plus1" onClick={onClick}>
+        click
+        <span data-testid="countLike1">{like1}</span>
+      </div>
+      <div className='likeDefault' data-testid="plus2" onClick={onClick2}>
+        click
+        <span data-testid ="countLike2">{like2}</span>
+      </div>
+      <div className='likeDefault' data-testid="countLike3" onClick={onClick3}>
+        
+        <span data-testid="plus3">{like3}</span>
+      </div>
+    </div> 
   );
 }
+export default Likes;
 
-export default App;
+

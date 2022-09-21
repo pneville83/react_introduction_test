@@ -1,58 +1,48 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 
-test('like 1 al renderizar por primera vez ', () => {
-  render(<App />);
-  const like = screen.getByText ("25");
-  expect (like).toBeInTheDocument(); 
-});
+describe ('Test para valoress inicilaes de los likes', ()=>{
+  test ('Likes iniciales del contador 1', ()=>{
+    render ( <App /> );
+    const like1 = screen.getByText ("30");
+    expect (like1).toBeInTheDocument();
+  });
 
-test('like 2 al renderizar por primera vez ', () => {
-  render(<App />);
-  const like2 = screen.getByText ("0");
-  expect (like2).toBeInTheDocument(); 
-});
+  test ('Likes iniciales del contador 2', ()=>{
+    render ( <App /> );
+    const like2 = screen.getByText ("39");
+    expect (like2).toBeInTheDocument();
+  });
 
-test('like 3 al renderizar por primera vez ', () => {
-  render(<App />);
-  const like3 = screen.getByText ("10");
-  expect (like3).toBeInTheDocument(); 
-});
-
-test ('like 1 al sumar un click  ', () => {
-  const { container } = render ( <App /> );
-  const button = container.querySelector ("button");
-  fireEvent.click (button);
-
-  const like = screen.getByTestId ("countLike1");
-  expect (like.textContent).toBe ("26")
+  test ('Likes iniciales del contador 3', ()=>{
+    render ( <App /> );
+    const like3 = screen.getByText ("83");
+    expect (like3).toBeInTheDocument();
+  });
 })
 
-test ('like 2 al sumar un click  ', () => {
-  render ( <App /> );
-  const button = screen.getByTestId ("plus2");
-  fireEvent.click (button);
-
-  const like2 = screen.getByTestId ("countLike2");
-  expect (like2.textContent).toBe ("1")
-})
-
-test ('like 3 al sumar 100  click  ', () => {
-  render ( <App />);
-  const button = screen.getByTestId ("plus3")
-  for (let i=0; i < 100; i++){
+describe ('Prueba de suma de likes al dar click', ()=>{
+  test ('Suma 1 like al contador 1', ()=>{
+    render ( <App />);
+    const button = screen.getByTestId ("plus1");
     fireEvent.click (button);
-  }
-  const like2 = screen.getByTestId ("countLike3");
-  expect (like2.textContent).toBe ("110")
-})
+    const like1 = screen.getByTestId ("countLike1")
+    expect (like1.textContent). toBe ("31");
+  });
 
-test ('like 1 al restar 30  click  ', () => {
-  render ( <App />);
-  const button = screen.getByTestId ("less")
-  for (let i=0; i < 35; i++){
+  test ('Suma 1 like al contador 2', ()=>{
+    render ( <App />);
+    const button = screen.getByTestId ("plus2");
     fireEvent.click (button);
-  }
-  const like = screen.getByTestId ("countLike1");
-  expect (like.textContent).toBe ("0")
+    const like2 = screen.getByTestId ("countLike2")
+    expect (like2.textContent). toBe ("40");
+  });
+  
+  test ('Suma 1 like al contador 1', ()=>{
+    render ( <App />);
+    const button = screen.getByTestId ("plus3");
+    fireEvent.click (button);
+    const like3 = screen.getByTestId ("countLike3")
+    expect (like3.textContent). toBe ("84");
+  });
 })
