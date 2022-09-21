@@ -6,8 +6,7 @@ on:
     branches:
       - main
 
-#
-
+jobs:
   test: # step para testear nuestra app react
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +15,7 @@ on:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: "16.16"
+          node-version: "17.8"
       - name: Installing Dependencies
         run: npm i
 
